@@ -16,6 +16,13 @@ export class EquipmentComponent implements OnInit {
 
   equipmentBeingEdited: object = null;
 
+  buttonColor = "yellow";
+  cargoHoldArray = [];
+  cargoMass = 0;
+  disableButton = false;
+  maxItems = 0;
+  maximumAllowedMass = 0;
+
   constructor() { }
 
   ngOnInit() {
@@ -40,4 +47,29 @@ export class EquipmentComponent implements OnInit {
   this.equipmentBeingEdited = null;
   }
 
+  addToCargoHold(){
+
+  }
+
+  addItem(member: object){
+    for(let i in this.equipment){
+      this.cargoHoldArray[i] = member;
+      if(this.cargoMass <=200){
+        return true;
+      } else {
+        return false;
+      }
+      if(this.cargoHoldArray.length === this.maxItems || this.cargoMass> this.maximumAllowedMass) {
+        this.disableButton = true;
+      }
+    }
+  }
+empty(){
+  this.cargoHoldArray = [];
+  this.cargoMass = 0;
+  this.disableButton = false;
 }
+
+
+}
+

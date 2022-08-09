@@ -1,6 +1,6 @@
 <h3>Equipment</h3>
 <ul>
-  <li *ngFor="let name of Equipment">
+  <!-- <li *ngFor="let name of equipment"> -->
 
     <!-- <span *ngIf="equipmentBeingEdited !== member; else elseBlock">
        <!-- display state of member -->
@@ -16,8 +16,17 @@
 
  </li> -->
  <li *ngFor="let member of equipment">
-  {{equipment.name}}
+   <button (click)="addItem(member)" [disabled]="disableButton" [style.backgroundColor]="buttonColor">Add to Cargo Hold</button> {{member.name}}
   <button (click)="remove(member)">remove</button> </li>
 </ul>
 <input #name type="text"/>
 <button (click)="add(name.value)">Add</button>
+<h2>Cargo Hold: {{cargoHoldArray.length}}/10 Spots Filled</h2>
+<li *ngFor="let cargo of cargoHoldArray">
+{{cargo}}
+</li>
+<h4>Mass in Hold: {{cargoMass}}</h4>
+<div class = "MassBudget">
+   <h4 [class.nearMaxMass] = "disableButton">Mass Budget Remaining: </h4>
+   <button (click)="empty()">Empty Hold</button>
+</div>
