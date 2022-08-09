@@ -22,7 +22,8 @@ export class CrewComponent implements OnInit {
 
   add(memberName: string, isFirst: boolean) {
     const filteredCrew = this.crew.filter(function(member) {
-      return member.name === memberName;
+     return member.name === memberName;
+      //return memberName;
 
     });
     if(filteredCrew.length>0){ return;}
